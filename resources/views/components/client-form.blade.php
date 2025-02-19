@@ -7,23 +7,29 @@
         @endif
         <div class="mb-4">
             <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="name">Name:</label>
-            <input type="text" name="name" id="name" value=""
+            <input type="text" name="name" id="name" value="{{ old('name') }}"
                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 dark:bg-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-            <p class="text-red-500 text-xs italic">This is an error message.</p>
+            @error('name')
+            <p class="text-red-500 text-xs italic">{{ $message }}</p>
+            @enderror
         </div>
         <div class="mb-4">
             <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="surname">Surname:</label>
-            <input type="text" name="surname" id="surname" value=""
+            <input type="text" name="surname" id="surname" value="{{ old('surname') }}"
                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 dark:bg-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-            <p class="text-red-500 text-xs italic">This is an error message.</p>
+            @error('surname')
+            <p class="text-red-500 text-xs italic">{{ $message }}</p>
+            @enderror
         </div>
         <div class="mb-4">
             <div class="flex gap-2 items-center mb-2">
                 <input type="hidden" name="premium" value="0">
-                <input type="checkbox" name="premium" id="premium" value="1" class="leading-tight">
+                <input type="checkbox" name="premium" id="premium" value="1" class="leading-tight" {{ old('premium') ? 'checked' : '' }}>
                 <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold" for="premium">Premium</label>
             </div>
-            <p class="text-red-500 text-xs italic">This is an error message.</p>
+            @error('premium')
+            <p class="text-red-500 text-xs italic">{{ $message }}</p>
+            @enderror
         </div>
         <div class="flex items-center justify-between">
             <button type="submit"

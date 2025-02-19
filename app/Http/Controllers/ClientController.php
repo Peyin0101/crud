@@ -13,7 +13,8 @@ class ClientController extends Controller
      */
     public function index()
     {
-        return "Werk de code in de ClientController af.";
+        $clients = Client::orderBy('id', 'desc')->paginate(10);
+        return view('clients.index', compact('clients'));
     }
 
     /**
@@ -21,7 +22,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        return view('clients.create');
     }
 
     /**
@@ -29,7 +30,14 @@ class ClientController extends Controller
      */
     public function store(StoreClientRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        $client = new Client();
+        $client->name = $validated['name'];
+        $client->surname = $validated['surname'];
+        $client->premium = $validated['premium'] ?? false;
+        $client->save();
+        return redirect()->route('clients.index');
     }
 
     /**
@@ -45,7 +53,7 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
-        //
+        return view('clients.edit', compact('client'));
     }
 
     /**
