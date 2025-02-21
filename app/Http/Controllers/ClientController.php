@@ -37,6 +37,9 @@ class ClientController extends Controller
         $client->surname = $validated['surname'];
         $client->premium = $validated['premium'] ?? false;
         $client->save();
+
+
+
         return redirect()->route('clients.index');
     }
 
