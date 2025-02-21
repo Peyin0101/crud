@@ -45,7 +45,7 @@ class ClientController extends Controller
      */
     public function show(Client $client)
     {
-        //
+        return view('clients.show', compact('client'));
     }
 
     /**
@@ -61,7 +61,13 @@ class ClientController extends Controller
      */
     public function update(UpdateClientRequest $request, Client $client)
     {
-        //
+        $validated = $request->validated();
+
+        $client->name = $validated['name'];
+        $client->surname = $validated['surname'];
+        $client->premium = $validated['premium'] ?? false;
+        $client->save();
+        return redirect()->route('clients.show', compact('client'));
     }
 
     /**
@@ -69,6 +75,7 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
-        //
+        $client->delete();
+        return redirect()->route('clients.index');
     }
 }
