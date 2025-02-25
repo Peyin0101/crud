@@ -25,6 +25,7 @@ class StoreClientRequest extends FormRequest
             'name' => 'required',
             'surname' => 'required',
             'premium' => 'boolean',
+            'image' => 'image',
         ];
     }
 }

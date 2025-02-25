@@ -18,6 +18,10 @@
             <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">Surname:</label>
             <p class="dark:text-gray-300">{{ $client->surname }}</p>
         </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">Image:</label>
+            <img class="max-w-lg" src="{{ asset('storage/' . $client->image_path) }}" alt="">
+        </div>
         <div class="flex items-center justify-start gap-4">
             <a href="{{ route('clients.edit', $client) }}"
                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</a>
@@ -29,6 +33,7 @@
                     class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
             </form>
         </div>
+
     </div>
     <a href="{{ route('clients.index') }}" class="text-blue-500 dark:text-blue-300">Back to Clients</a>
 </x-layout>

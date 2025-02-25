@@ -36,6 +36,11 @@ class ClientController extends Controller
         $client->name = $validated['name'];
         $client->surname = $validated['surname'];
         $client->premium = $validated['premium'] ?? false;
+
+        if ($request->file('image')) {
+            $client->image_path = $request->file('image')->store('images', 'public');
+        }
+
         $client->save();
 
 
@@ -69,6 +74,11 @@ class ClientController extends Controller
         $client->name = $validated['name'];
         $client->surname = $validated['surname'];
         $client->premium = $validated['premium'] ?? false;
+
+        if ($request->file('image')) {
+            $client->image_path = $request->file('image')->store('images', 'public');
+        }
+
         $client->save();
         return redirect()->route('clients.show', compact('client'));
     }

@@ -25,6 +25,7 @@ class UpdateClientRequest extends FormRequest
             'name' => 'required',
             'surname' => 'required',
             'premium' => 'boolean',
+            'image' => 'image',
         ];
     }
 }
